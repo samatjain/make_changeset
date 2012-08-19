@@ -31,13 +31,18 @@ SOFTWARE.
 
 import argparse
 import urllib2
-import xml.etree.cElementTree as ElementTree
 from datetime import datetime
 import time
 import math
 import gzip
 import StringIO
 import sys
+
+# Attempt to import fastest ElementTree library
+try:
+    import lxml.etree as ElementTree
+except ImportError:
+    import xml.etree.cElementTree as ElementTree
 
 opener = urllib2.build_opener()
 opener.addheaders = [('User-Agent', 'make_changeset/0.0.1')]
